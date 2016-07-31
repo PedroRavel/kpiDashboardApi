@@ -1,0 +1,49 @@
+<div class="row statcard" ng-if="kpiData">
+  <div class="col-sm-12 col-md-12 m-b">
+    <div class="statcard">
+      <div class="p-a">
+        <h2 class="statcard-number">{{kpiData.kpi}}
+          <span class = "btn warning-label-low">Low</span>
+          <span class = "btn warning-label-high">High</span>
+        </h2>
+      </div>
+      <div id="container">
+        <canvas width="573" height="200" class="chart chart-line" chart-data="[kpiData.values]" chart-options="options" chart-labels="kpiData.date" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div class = "row" style="display:relative; margin-left: 1em; margin-right: .5em">
+    <div class="col-sm-12 col-md-12 m-b">
+      <div class="label label-success" ng-style="{'background-color': changeNumberColor(kpiData.number[kpiData.number.length - 1],kpiData.minForNumber,kpiData.maxForNumber)}">
+        {{kpiData.number[kpiData.number.length - 1]}}
+      </div>
+    </div>
+  </div>
+  <div class="row" style="display:relative; margin-left: 1em; margin-right: .5em">
+    <div class="col-md-6 m-b">
+      <div class="list-group">
+        <h4 class="list-group-header header-font-size">
+          {{kpiData.kpi}} 
+        </h4>
+        <a ng-repeat = "data in kpiData.data | limitTo: -10 track by $index" class="list-group-item">
+          <span class="list-group-progress" style="width: 100%;"></span>
+          <span class="pull-right text-muted">{{data.values}}</span>
+          {{data.date}} 
+        </a>
+      </div>
+    </div>
+    <div class="col-md-6 m-b">
+      <div class="list-group">
+        <h4 class="list-group-header header-font-size">
+          {{kpiData.kpi}} Critical
+        </h4>
+        <a ng-repeat = "critical in kpiData.criticalValues | limitTo: -10 track by $index " class="list-group-item">
+          <span class="list-group-progress" ng-style="{'background-color': changeTableColor(critical.warn)}" style="width: 100%";></span>
+          <span class="pull-right text-muted">{{critical.value}}</span>
+          {{critical.date}} 
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
