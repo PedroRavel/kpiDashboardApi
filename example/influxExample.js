@@ -1,161 +1,66 @@
 var got = require('got');
+var random;
 
 
 setInterval(function(){
-	var ran0 = Math.floor((Math.random() * 100) + 1);
-	var ran1 = Math.floor((Math.random() * 100) + 1);
-	var ran2 = Math.floor((Math.random() * 100) + 1);
-	var ran3 = Math.floor((Math.random() * 100) + 1);
-	var ran4 = Math.floor((Math.random() * 100) + 1);
-	var ran5 = Math.floor((Math.random() * 100) + 1);
-	var ran6 = Math.floor((Math.random() * 100) + 1);
-	var ran7 = Math.floor((Math.random() * 100) + 1);
-	var ran8 = Math.floor((Math.random() * 100) + 1);
+    
+	random = Math.floor((Math.random() * 100) + 1);
 
+    var logins = { "number":random, "values":random, "kpi":"LOGINS", 
+        "minForValues":30, "maxForValues": 90, "minForNumber": 40, "maxForNumber": 80,
+        "tag": ""
+    }
 
-var json0 = {
+    random = Math.floor((Math.random() * 100) + 1);
 
-    "number":ran0,
-    "values":ran0,
-    "kpi":"LOGINS_PER_CENTURY",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 80,
-    "tag": ""
-  
-}
-var json1 = {
+    var cpu_usage = { "number":random, "values":random, "kpi":"CPU_USAGE", 
+        "minForValues":30, "maxForValues": 90, "minForNumber": 40, "maxForNumber": 80,
+        "tag": ""
+    }
 
-    "number":ran1,
-    "values":ran1,
-    "kpi":"LOGINS_PER_YEAR",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 80,
-    "tag": ""
-  
-}
-var json2 = {
+    random = Math.floor((Math.random() * 100) + 1);
 
-    "number":ran2,
-    "values":ran2,
-    "kpi":"LOGINS_PER_MINUTE",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 80,
-    "tag": ""
-  
-}
-var json3 = {
+    var ram_usage = { "number":random, "values":random, "kpi":"RAM_USAGE", 
+        "minForValues":30, "maxForValues": 90, "minForNumber": 40, "maxForNumber": 80,
+        "tag": ""
+    }
 
-    "number":ran3,
-    "values":ran3,
-    "kpi":"LOGINS_PER_HOUR",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 80,
-    "tag": ""
-  
-}
-var json4 = {
+    random = Math.floor((Math.random() * 100) + 1);
 
-    "number":ran4,
-    "values":ran4,
-    "kpi":"LOGINS_PER_DAY",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 80,
-    "tag": ""
-  
-}
-var json5 = {
+    var server_load = { "number":random, "values":random, "kpi":"SERVER_LOAD", 
+        "minForValues":30, "maxForValues": 90, "minForNumber": 40, "maxForNumber": 80,
+        "tag": ""
+    }
 
-    "number":ran5,
-    "values":ran5,
-    "kpi":"LOGINS_PER_SECOND",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 80,
-    "tag": ""
-  
-}
-var json6 = {
+    random = Math.floor((Math.random() * 100) + 1);
 
-    "number":ran6,
-    "values":ran6,
-    "kpi":"LOGINS_PER_DECADE",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 80,
-    "tag": ""
-  
-}
-var json7 = {
+    var card_payments = { "number":random, "values":random, "kpi":"CARD_PAYMENTS", 
+        "minForValues":30, "maxForValues": 90, "minForNumber": 40, "maxForNumber": 80,
+        "tag": ""
+    }
 
-    "number":ran7,
-    "values":ran7,
-    "kpi":"LOGINS",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 80,
-    "tag": ""
-  
-}
-var json8 = {
+    random = Math.floor((Math.random() * 100) + 1);
 
-    "number":ran8,
-    "values":ran8,
-    "kpi":"LOGINS_PER_MONTH",
-    "minForValues":30,
-    "maxForValues": 90,
-    "minForNumber": 40,
-    "maxForNumber": 100,
-    "tag": ""
-  
-}
-got.post('http://localhost:8000/metric/add',{body:json0})
-  .then(function(response){
-    console.log(response.body)
-})
-got.post('http://localhost:8000/metric/add',{body:json1})
-  .then(function(response){
-    console.log(response.body)
-})
-got.post('http://localhost:8000/metric/add',{body:json2})
-  .then(function(response){
-    console.log(response.body)
-})
-got.post('http://localhost:8000/metric/add',{body:json3})
-  .then(function(response){
-    console.log(response.body)
-})
-got.post('http://localhost:8000/metric/add',{body:json4})
-  .then(function(response){
-    console.log(response.body)
-})
-got.post('http://localhost:8000/metric/add',{body:json5})
-  .then(function(response){
-    console.log(response.body)
-})
-got.post('http://localhost:8000/metric/add',{body:json6})
-  .then(function(response){
-    console.log(response.body)
-})
-got.post('http://localhost:8000/metric/add',{body:json7})
-  .then(function(response){
-    console.log(response.body)
-})
-got.post('http://localhost:8000/metric/add',{body:json8})
-  .then(function(response){
-    console.log(response.body)
-})
+    var account_page_visited = { "number":random, "values":random, "kpi":"ACCOUNT_PAGE_VISITED", 
+        "minForValues":30, "maxForValues": 90, "minForNumber": 40, "maxForNumber": 80,
+        "tag": ""
+    }
 
+    got.post('http://localhost:8000/metric/add',{body:logins})
+    
+
+    got.post('http://localhost:8000/metric/add',{body:cpu_usage})
+    
+
+    got.post('http://localhost:8000/metric/add',{body:ram_usage})
+    
+
+    got.post('http://localhost:8000/metric/add',{body:server_load})
+    
+
+    got.post('http://localhost:8000/metric/add',{body:card_payments})
+    
+
+    got.post('http://localhost:8000/metric/add',{body:account_page_visited})
+    
 },2000)
