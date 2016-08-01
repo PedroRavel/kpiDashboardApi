@@ -1,5 +1,5 @@
 # kpidashboard-api
-API for visualizing metrics via dashboard.
+API for visualizing metrics via dashboard. Works on desktop and mobile. 
 
 ##Store data using mongodb or influxdb
 
