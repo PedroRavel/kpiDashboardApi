@@ -14,7 +14,7 @@ const indexForNumberInQueryArray = 5;
 const indexForValuesInQueryArray = 6;
 const beginningIndexForTime = 11;
 const endingIndexForTime = 19;
-const notAvailable = -1;
+const notAvailable = "-1";
 
 
 //stucture to store influx data and pass to front end in format it can interprit 
@@ -50,13 +50,13 @@ client.createDatabase(DATABASE_NAME,function(err){
   adds to seperate array if value passes threshold. ignores logic if thresholds
   are below 0 */
 function addCriticalValues(array, val, max, min, timeStamp){
-  if(max >= 0){
-    if(val >= max){
+  if(parseFloat(max) >= 0){
+    if(parseFloat(val) >= parseFloat(max)){
       return array.push({value: val, date: timeStamp, warn:"above"})
     }
   }
-  if(min >= 0){
-    if(val <= min){
+  if(parseFloat(min) >= 0){
+    if(parseFloat(val) <= parseFloat(min)){
       return array.push({value: val, date: timeStamp, warn:"below"})
     }
   }
@@ -132,26 +132,26 @@ exports.getMetrics = function(req,res){
             .substring(beginningIndexForTime,endingIndexForTime)
           )
           
-          kpi.number.push(parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForNumberInQueryArray]))
-          kpi.values.push(parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForValuesInQueryArray]))
+          kpi.number.push(measurements[indexIntoQueryArray].series[i].values[j][indexForNumberInQueryArray])
+          kpi.values.push(measurements[indexIntoQueryArray].series[i].values[j][indexForValuesInQueryArray])
           
           kpi.data.push({
-            values:parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForValuesInQueryArray]),
+            values:measurements[indexIntoQueryArray].series[i].values[j][indexForValuesInQueryArray],
             date:measurements[indexIntoQueryArray].series[i].values[j][indexForDateInQuery].substring(beginningIndexForTime,endingIndexForTime)
           })
           
-          kpi.minForValues = parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForMinValueInQueryArray])
-          kpi.maxForValues = parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForMaxValueInQueryArray])
-          kpi.minForNumber = parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForMinNumberInQueryArray])
-          kpi.maxForNumber = parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForMaxNumberInQueryArray])
+          kpi.minForValues = measurements[indexIntoQueryArray].series[i].values[j][indexForMinValueInQueryArray]
+          kpi.maxForValues = measurements[indexIntoQueryArray].series[i].values[j][indexForMaxValueInQueryArray]
+          kpi.minForNumber = measurements[indexIntoQueryArray].series[i].values[j][indexForMinNumberInQueryArray]
+          kpi.maxForNumber = measurements[indexIntoQueryArray].series[i].values[j][indexForMaxNumberInQueryArray]
           addCriticalValues(
             kpi.criticalValues, 
-            parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForValuesInQueryArray]), 
-            parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForMaxValueInQueryArray]),
-            parseFloat(measurements[indexIntoQueryArray].series[i].values[j][indexForMinValueInQueryArray]),
+            measurements[indexIntoQueryArray].series[i].values[j][indexForValuesInQueryArray], 
+            measurements[indexIntoQueryArray].series[i].values[j][indexForMaxValueInQueryArray],
+            measurements[indexIntoQueryArray].series[i].values[j][indexForMinValueInQueryArray],
             measurements[indexIntoQueryArray].series[i].values[j][indexForDateInQuery]
               .substring(beginningIndexForTime,endingIndexForTime)
-          )
+          ) 
        
         }
         data.push(kpi);
@@ -176,22 +176,22 @@ exports.getOneMetric = function(req,res){
           measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForDateInQuery]
           .substring(beginningIndexForTime,endingIndexForTime)
         )
-          kpi.number.push(parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForNumberInQueryArray]))
-          kpi.values.push(parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForValuesInQueryArray]))
+          kpi.number.push(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForNumberInQueryArray])
+          kpi.values.push(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForValuesInQueryArray])
           kpi.data.push({
-            values:parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForValuesInQueryArray]),
+            values:measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForValuesInQueryArray],
             date:measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForDateInQuery].substring(beginningIndexForTime,endingIndexForTime)
           })
           
-          kpi.minForValues = parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMinValueInQueryArray])
-          kpi.maxForValues = parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMaxValueInQueryArray])
-          kpi.minForNumber = parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMinNumberInQueryArray])
-          kpi.maxForNumber = parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMaxNumberInQueryArray])
+          kpi.minForValues = measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMinValueInQueryArray]
+          kpi.maxForValues = measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMaxValueInQueryArray]
+          kpi.minForNumber = measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMinNumberInQueryArray]
+          kpi.maxForNumber = measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMaxNumberInQueryArray]
           addCriticalValues(
             kpi.criticalValues, 
-            parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForValuesInQueryArray]), 
-            parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMaxValueInQueryArray]),
-            parseFloat(measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMinValueInQueryArray]),
+            measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForValuesInQueryArray], 
+            measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMaxValueInQueryArray],
+            measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForMinValueInQueryArray],
             measurements[indexIntoQueryArray].series[indexIntoSeriesOfQueryArray].values[j][indexForDateInQuery]
               .substring(beginningIndexForTime,endingIndexForTime)
           )
