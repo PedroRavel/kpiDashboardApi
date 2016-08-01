@@ -34,6 +34,22 @@ var app = angular.module('myApp',['ngRoute','chart.js'])
       }
     };
 
+    /*Limit data points displayed on graph to avoid congestion. Can add more datapoints
+    or less by adjusting limit parameter passed in. */
+    $rootScope.limitArrayLength = function(limit,oldArray,newArray){
+      var j = 0;
+
+      if(limit <= oldArray.length){
+        for(var i = oldArray.length - limit; i < oldArray.length; i++){
+          newArray[j] = oldArray[i];
+          j++;
+        }
+        return newArray;
+      } else {
+        return oldArray;
+      }
+    }
+
     //extra options for charts. setting background-color to transparent allows area below the graph to not be drawn
     $rootScope.dataSetOverride = [{
       //backgroundColor:"transparent",
@@ -118,7 +134,7 @@ app.controller("indexCtrl", function ($scope,$interval,$http,$timeout){
 
       //compares new data from query request to current list of data to not always replace current list. Just a quick fix
       if(!angular.equals($scope.list,res.data)){ 
-        console.log('Query')
+ 
           $scope.list = res.data;
       }
     })
