@@ -1,4 +1,4 @@
-# kpidashboard-api
+# kpidashboardapi
 API for visualizing metrics via dashboard. Works on desktop and mobile. 
 
 ##Store data using mongodb or influxdb
@@ -8,7 +8,7 @@ Must have node.js and npm installed
 https://nodejs.org/en/
 Once node is installed, in terminal enter:
 ```
-cd kpidashboard-api
+cd kpidashboardapi
 npm install
 ```
 ##Influx setup
@@ -18,7 +18,7 @@ After installation run influx db in terminal with:
 ```
 influxd
 ```
-Open seperate terminal and navigate to kpidashboard-api and enter:
+Open seperate terminal and navigate to kpidashboardapi and enter:
 ```
 node influxServer.js
 ```
@@ -60,7 +60,7 @@ After installation run mongo db in terminal with:
 ```
 mongod
 ```
-Open seperate terminal and navigate to kpidashboard-api and enter:
+Open seperate terminal and navigate to kpidashboardapi and enter:
 ```
 node mongoServer.js
 ```
