@@ -1,10 +1,12 @@
 var got = require('got');
 var random;
 
+console.log("=====================================================================")
 console.log("Running influx database test. To end press ctrl + c.")
 console.log("Values will be stored in database specified.")
 console.log("To empty database, run influx and run command drop database <dbname>.") 
-console.log("Kpi_Metrics is default database name".)
+console.log("Kpi_Metrics is default database name.")
+console.log("=====================================================================")
 
 setInterval(function(){
     

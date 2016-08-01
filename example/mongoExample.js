@@ -1,9 +1,11 @@
 var got = require('got');
 var random;
 
+console.log("=====================================================================")
 console.log("Running mongo database test. To end press ctrl + c")
 console.log("Values will be stored in database.")
 console.log("To empty database, visit localhost:3000/metric/delete.") 
+console.log("=====================================================================")
 
 setInterval(function(){
     
