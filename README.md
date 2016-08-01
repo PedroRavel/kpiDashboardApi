@@ -45,7 +45,7 @@ minForValues, maxForValues, minForNumber, maxForNumber are optional. Used to sho
 #####Example use of api:
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"kpi":"LOGINS_PER_HOUR",
-"values":"1000","number":63,"tag":""}' http://localhost:8000/metric/add
+"values":"1000","number":"63","tag":""}' http://localhost:8000/metric/add
 ```
 An example is also provided in the example folder.
 cd into example folder and in the terminal enter:
@@ -83,7 +83,7 @@ minForValues, maxForValues, minForNumber, maxForNumber are optional. Used to sho
 #####Example use of api:
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"kpi":"LOGINS_PER_HOUR",
-"values":"1000","number":63,"tag":""}' http://localhost:3000/metric/add
+"values":"1000","number":"63"}' http://localhost:3000/metric/add
 ```
 An example is also provided in the example folder.
 cd into example folder and in the terminal enter:
