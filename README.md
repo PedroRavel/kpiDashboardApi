@@ -22,6 +22,9 @@ Open seperate terminal and navigate to kpidashboard-api and enter:
 ```
 node influxServer.js
 ```
+###Note
+Database named `Kpi_Metrics` will be created to store metric values after running `influxServer.js.` The name and configuration can be changed in `influxServer.js`
+
 On brower navigate to http://localhost:8000
 ##Storing metrics for visualization.
 Using the API `http://localhost:8000/metric/add` you can post json with necessary values:
