@@ -11,8 +11,8 @@
               <span class = "btn warning-label-high">High</span>
             </h2>
           </div>
-          <div id="container">
-            <canvas width="573" height="200" class="chart chart-line" chart-data="[metrics.values.slice(metrics.values.length - 100,metrics.values.length)]" chart-options="options" chart-labels="metrics.date.slice(metrics.date.length - 100, metrics.date.length)" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;">
+          <div id="container" ng-init = "values = []; dates = []">
+            <canvas width="573" height="200" class="chart chart-line" chart-data="[limitArrayLength(100,metrics.values,values)]" chart-options="options" chart-labels="limitArrayLength(100,metrics.date,dates)" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;">
             </canvas>
           </div>
         </div>
@@ -68,8 +68,8 @@
                   <span class = "btn warning-label-high">High</span>
                 </h2>
               </div>
-              <div id="container"">
-                <canvas width="573" height="300" class="chart chart-line" chart-data="[metrics.values.slice(metrics.values.length - 50,metrics.values.length)]" chart-options="options" chart-labels="  metrics.date.slice(metrics.date.length - 50, metrics.date.length)" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;">
+              <div id="container" ng-init = "values = []; dates = []">
+                <canvas width="573" height="300" class="chart chart-line" chart-data="[limitArrayLength(50,metrics.values,values)]" chart-options="options" chart-labels="limitArrayLength(50,metrics.date,dates)" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;">
                 </canvas>
               </div>
             </div>
@@ -124,8 +124,8 @@
                   <span class = "btn warning-label-high">High</span>
                 </h2>
               </div>
-              <div id="container"">
-                <canvas width="600" height="300" class="chart chart-line" chart-data="[metrics.values.slice(metrics.values.length - 30,metrics.values.length)]" chart-options="options" chart-labels="metrics.date.slice(metrics.date.length - 30, metrics.date.length)" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;""></canvas>
+              <div id="container" ng-init= "values = []; dates = []">
+                <canvas width="600" height="300" class="chart chart-line" chart-data="[limitArrayLength(30,metrics.values,values)]" chart-options="options" chart-labels="limitArrayLength(30,metrics.date,dates)" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;""></canvas>
               </div>
             </div>
           </div>

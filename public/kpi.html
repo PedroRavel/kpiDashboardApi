@@ -7,8 +7,8 @@
           <span class = "btn warning-label-high">High</span>
         </h2>
       </div>
-      <div id="container">
-        <canvas width="573" height="200" class="chart chart-line" chart-data="[kpiData.values.slice(kpiData.length - 100,kpiData.length)]" chart-options="options" chart-labels="kpiData.date.slice(kpiData.length - 100,kpiData.length)" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;">
+      <div id="container" ng-init = "values = []; dates = []">
+        <canvas width="573" height="200" class="chart chart-line" chart-data="[limitArrayLength(100,kpiData.values,values)]" chart-options="options" chart-labels="limitArrayLength(100,kpiData.date,dates)" chart-dataset-override = "dataSetOverride" style="display: block; width: 673px; height: 168px;">
         </canvas>
       </div>
     </div>
