@@ -53,9 +53,7 @@ var app = angular.module('myApp',['ngRoute','chart.js'])
     //extra options for charts. setting background-color to transparent allows area below the graph to not be drawn
     $rootScope.dataSetOverride = [{
       //backgroundColor:"transparent",
-      pointHoverRadius: 8,
       pointHoverRadius: 8
-
     }]
 
     //function to change color of critical raw table data depending on warn value passed in of metric and thresholds.
@@ -90,6 +88,11 @@ app.config(['$routeProvider','$locationProvider',function($routeProvider,$locati
       {
         templateUrl: "dashboard.html",
         controller:"dashboardCtrl"
+      })
+    .when('/stacked',
+      {
+        templateUrl:"stackedDashboard.html",
+        controller: "dashboardCtrl"
       })
     .when('/metric/find/:kpi',
     {
@@ -134,7 +137,7 @@ app.controller("indexCtrl", function ($scope,$interval,$http,$timeout){
 
       //compares new data from query request to current list of data to not always replace current list. Just a quick fix
       if(!angular.equals($scope.list,res.data)){ 
- 
+          
           $scope.list = res.data;
       }
     })
