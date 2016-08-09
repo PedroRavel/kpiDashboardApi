@@ -3,7 +3,10 @@ var app = angular.module('myApp',['ngRoute','chart.js'])
   .run(function($rootScope){
     //options for chart from chart.js. 
     $rootScope.options = {
-
+      bezierCurve: false,
+      bezier:{
+        curve:false
+      },
       animation: {
         duration: 0.0
       },
@@ -53,6 +56,7 @@ var app = angular.module('myApp',['ngRoute','chart.js'])
     //extra options for charts. setting background-color to transparent allows area below the graph to not be drawn
     $rootScope.dataSetOverride = [{
       //backgroundColor:"transparent",
+      bezierCurve: false,
       pointHoverRadius: 8
     }]
 
